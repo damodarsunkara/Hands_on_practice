@@ -1,0 +1,85 @@
+🔁 4. File Methods Summary
+Method	Description
+read()	Reads entire file
+read(n)	Reads n characters
+readline()	Reads one line
+readlines()	Returns list of lines
+write(str)	Writes string
+writelines()	Writes a list of strings
+seek(n)	Moves cursor to byte n
+tell()	Returns current cursor position
+close()	Closes the file
+
+📂 5. Working with File Paths
+Use the os and pathlib modules.
+
+python
+Copy
+Edit
+import os
+
+file_path = os.path.join("folder", "file.txt")
+with open(file_path, "r") as file:
+    print(file.read())
+Or with pathlib:
+
+python
+Copy
+Edit
+from pathlib import Path
+
+file = Path("folder/file.txt")
+print(file.read_text())
+🧠 6. Advanced File Handling
+a. Exception Handling
+python
+Copy
+Edit
+try:
+    with open("nofile.txt", "r") as file:
+        print(file.read())
+except FileNotFoundError:
+    print("File not found!")
+b. Reading and Writing Binary Files
+python
+Copy
+Edit
+with open("image.png", "rb") as img_file:
+    data = img_file.read()
+
+with open("copy.png", "wb") as copy_file:
+    copy_file.write(data)
+c. Using seek() and tell()
+python
+Copy
+Edit
+with open("example.txt", "r") as file:
+    print(file.read(5))
+    print(file.tell())   # Where we are in file
+    file.seek(0)         # Move to start
+    print(file.read(5))
+🧪 7. File Object Attributes
+python
+Copy
+Edit
+with open("example.txt", "r") as f:
+    print(f.name)
+    print(f.mode)
+    print(f.closed)
+📚 Bonus: Read Large Files in Chunks
+python
+Copy
+Edit
+def read_large_file(filename):
+    with open(filename, 'r') as f:
+        while chunk := f.read(1024):  # 1KB at a time
+            print(chunk)
+
+read_large_file("largefile.txt")
+s
+
+
+
+
+
+

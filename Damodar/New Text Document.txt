@@ -1,0 +1,201 @@
+# Basic Dictionary
+person = {"name": "alice", "age": 30, "city": "newyork"}
+
+# Add key-value
+person["job"] = "Engineer"
+
+# Update value
+person["age"] = 31
+
+# Delete a key
+del person["city"]
+
+# Loop through dictionary
+for k, v in person.items():
+    print(f"{k}: {v}")
+
+# Check if key exists
+if "age" in person:
+    print("Age is present")
+
+# Merge two dictionaries
+dict1 = {"a": 1, "b": 2}
+dict2 = {"b": 3, "c": 4}
+dict1.update(dict2)
+
+# Create dict from two lists                                                       
+keys = ["name", "age", "city"]
+values = ["Bob", 25, "London"]
+combined = dict(zip(keys, values))
+
+# Nested Dictionary
+students = {
+    "Alice": {"age": 24, "grade": "A"},
+    "Bob": {"age": 22, "grade": "B"},
+    "Charlie": {"age": 23, "grade": "C"},
+    "David": {"age": 21, "grade": "A+"}
+}
+
+# Add new nested entry
+students["Eve"] = {"age": 20, "grade": "B+"}
+
+# Update nested value
+students["Charlie"]["grade"] = "B+"
+
+# Grade ranking for comparisons
+grade_rank = {
+    "A+": 7, "A": 6, "B+": 5, "B": 4,
+    "C": 3, "D": 2, "F": 1
+}
+
+# Print students with grade worse than B
+for name, info in students.items():
+    if grade_rank[info["grade"]] < grade_rank["B"]:
+        print(name)
+
+# Count students older than 22
+count = 0
+for info in students.values():
+    if info["age"] > 22:
+        count += 1
+print("Count:", count)
+
+# Find top-grade students
+highest = 0
+for info in students.values():
+    if grade_rank[info["grade"]] > highest:
+        highest = grade_rank[info["grade"]]
+
+for name, info in students.items():
+    if grade_rank[info["grade"]] == highest:
+        print("Top student:", name)
+
+
+
+
+
+Absolutely! Let’s go through real-time file handling examples step by step, with detailed code explanations. We'll cover 3 common and practical formats:
+
+CSV – for tabular data like spreadsheets
+
+JSON – for structured data like settings, records
+
+Pickle – for saving Python objects (models, data structures)
+
+✅ 1. CSV File Handling – Use Case: Product Inventory
+🧾 Goal:
+Read product data from a CSV file and print product names and prices.
+
+🔹 Sample CSV: products.csv
+arduino
+Copy
+Edit
+ProductID,Name,Price
+101,Laptop,999.99
+102,Phone,499.99
+103,Mouse,19.99
+🔸 Step-by-Step Code
+python
+Copy
+Edit
+import csv  # Step 1: Import the CSV module
+
+# Step 2: Open the CSV file in read mode
+with open('products.csv', 'r') as file:
+    reader = csv.DictReader(file)  # Step 3: Read each row as a dictionary
+
+    # Step 4: Loop through the file and access values
+    for row in reader:
+        print(f"Product: {row['Name']}, Price: ${row['Price']}")
+🧠 Explanation:
+import csv: Enables handling of CSV files.
+
+open('products.csv', 'r'): Opens the file for reading.
+
+csv.DictReader(file): Reads each line and converts it into a dictionary using the header row as keys.
+
+row['Name']: Accesses the value for the “Name” column.
+
+print(...): Outputs product name and price clearly.
+
+✅ 2. JSON File Handling – Use Case: Patient Record System
+🧾 Goal:
+Read patient records from a JSON file and display their name and condition.
+
+🔹 Sample JSON: patients.json
+json
+Copy
+Edit
+[
+  {"name": "Alice", "age": 30, "condition": "Healthy"},
+  {"name": "Bob", "age": 45, "condition": "Diabetes"}
+]
+🔸 Step-by-Step Code
+python
+Copy
+Edit
+import json  # Step 1: Import the JSON module
+
+# Step 2: Open JSON file in read mode
+with open('patients.json', 'r') as file:
+    patients = json.load(file)  # Step 3: Load JSON content into Python list
+
+# Step 4: Loop through patient records
+for patient in patients:
+    print(f"{patient['name']} is {patient['age']} years old and has {patient['condition']}.")
+🧠 Explanation:
+import json: Lets Python work with JSON files.
+
+open(..., 'r'): Opens the file for reading.
+
+json.load(...): Converts JSON data into Python objects (list of dictionaries).
+
+Loop iterates over each patient dictionary and prints their details.
+
+✅ 3. Pickle File Handling – Use Case: Saving a Python Dictionary
+🧾 Goal:
+Save a Python dictionary to a file, and then read it back.
+
+🔸 Step-by-Step Code
+python
+Copy
+Edit
+import pickle  # Step 1: Import pickle for object serialization
+
+# Step 2: Data to save
+data = {'name': 'John', 'scores': [95, 87, 92]}
+
+# Step 3: Save object to file in binary mode
+with open('data.pkl', 'wb') as file:
+    pickle.dump(data, file)  # Saves Python object to file
+🧠 Explanation (Writing):
+import pickle: Used to serialize Python objects.
+
+open('data.pkl', 'wb'): Opens a file in write-binary mode.
+
+pickle.dump(data, file): Converts data into binary and saves it.
+
+🔸 Now: Read it back
+python
+Copy
+Edit
+# Step 4: Load object from file
+with open('data.pkl', 'rb') as file:
+    loaded_data = pickle.load(file)
+
+# Step 5: Use the loaded data
+print(f"Name: {loaded_data['name']}")
+print(f"Scores: {loaded_data['scores']}")
+🧠 Explanation (Reading):
+open('data.pkl', 'rb'): Opens the file in read-binary mode.
+
+pickle.load(...): Deserializes the binary back into a Python dictionary.
+
+We then access keys just like normal Python dictionaries.
+
+🏁 Summary Table
+Format	Best For	Module	File Type	Serialization
+CSV	Tabular data (Excel)	csv	.csv	No
+JSON	Configs, Records	json	.json	Yes (Text)
+Pickle	Python-only objects	pickle	.pkl	Yes (Binary)
+

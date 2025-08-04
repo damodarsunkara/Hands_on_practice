@@ -1,0 +1,83 @@
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registration Form</title>
+  <link rel="stylesheet"  href="verical.css">
+</head>
+<body>
+  <fieldset>
+    <legend>REGISTRATION</legend>
+    <form method="post">
+      <table>
+        <div class="id">
+          <tr>
+            <td><label for="fname">FIRST NAME</label></td>
+            <td><input type="text" id="fname" name="fname" placeholder="First Name" required pattern="[A-Z][a-z]*" title="Ex: Dhoni"></td>
+          </tr>
+        </div>
+        <tr>
+          <td><label for="lname">LAST NAME</label></td>
+          <td><input type="text" id="lname" name="lname" placeholder="Last Name" required pattern="[A-Z][a-z]*" title="Ex: Dhoni"></td>
+        </tr>
+        <tr>
+          <td><label for="username">USER NAME:</label></td>
+          <td><input type="text" id="username" name="username" required pattern="[a-zA-Z0-9]{4,}" title="At least 4 characters: letters and numbers only"></td>
+        </tr>
+        <tr>
+          <td><label for="password">PASSWORD</label></td>
+          <td><input type="password" id="password" name="password" required pattern="(?=.*[A-Z])(?=.*\d)(?=.*[&,_,$]).{6,}" title="At least one uppercase, number, and special char (&,_,$)"></td>
+        </tr>
+        <tr>
+          <td><label for="cpassword">CONFIRM PASSWORD</label></td>
+          <td><input type="password" id="cpassword" name="cpassword" required></td>
+        </tr>
+        <tr>
+          <td><label for="email">EMAIL</label></td>
+          <td><input type="email" id="email" name="email" required></td>
+        </tr>
+        <tr>
+          <td><label for="mobile">MOBILE NUMBER</label></td>
+          <td><input type="tel" id="mobile" name="mobile" required pattern="[6-9][0-9]{9}" title="10-digit number starting with 6, 7, 8, or 9"></td>
+        </tr>
+        <tr>
+          <td><label for="date">CURRENT DATE</label></td>
+          <td><input type="date" id="date" name="date"></td>
+        </tr>
+        <tr>
+          <td><label for="file">ADD FILE</label></td>
+          <td><input type="file" id="file" name="file"></td>
+        </tr>
+        <tr>
+          <td><label>GENDER:</label></td>
+          <td>
+            <input type="radio" name="gender" value="male" required> Male
+            <input type="radio" name="gender" value="female"> Female
+          </td>
+        </tr>
+        <tr>
+          <td><label for="location">LOCATION</label></td>
+          <td>
+            <select id="location" name="location" required>
+              <option value="">Select</option>
+              <option value="chennai">Chennai</option>
+              <option value="delhi">Delhi</option>
+              <option value="mumbai">Mumbai</option>
+              <option value="kolkata">Kolkata</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </fieldset>
+</body>
+</html>

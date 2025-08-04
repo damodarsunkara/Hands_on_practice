@@ -1,0 +1,19 @@
+span{
+    color:blue;
+    /*background-color: aqua;*/
+    border: 2px solid black;
+    padding:20px;
+    margin:20px;
+    height:100px;
+    width:200px;
+}
+p{
+      color:blue;
+    /*background-color: aqua;*/
+    border: 2px solid black;
+    padding:20px;
+    margin:20px;
+    height:100px;
+    width:200px;
+
+}

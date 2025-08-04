@@ -1,0 +1,174 @@
+# SQL Interview Practice Progress
+
+Q1: SELECT * FROM Employees; -- Done  
+Q2: SELECT FirstName, LastName FROM Employees; -- Done  
+Q3: SELECT * FROM Employees WHERE Age > 30; -- Done  
+Q4: SELECT * FROM Employees WHERE FirstName LIKE 'A%'; -- Done  
+Q5: SELECT * FROM Employees ORDER BY Salary DESC; -- Done  
+Q6: SELECT DepartmentID, SUM(Salary) AS TotalSalary FROM Employees GROUP BY DepartmentID; -- In progress
+
+Concept:
+To find the second-highest salary, you can use a subquery to retrieve the maximum salary that is less than the overall highest salary.
+
+Query:
+sql
+Copy code
+SELECT MAX(Salary) AS SecondHighestSalary
+FROM Employees
+WHERE Salary < (SELECT MAX(Salary) FROM Employees);
+Explanation:
+
+
+
+
+Q1: Retrieve all columns from the Employees table.
+sql
+Copy code
+SELECT * FROM Employees;
+Explanation: This query selects all columns from the Employees table.
+
+Q2: Retrieve first and last names of all employees.
+sql
+Copy code
+SELECT FirstName, LastName FROM Employees;
+Explanation: This query selects the FirstName and LastName columns from the Employees table.
+
+Q3: Retrieve all employees older than 30 years.
+sql
+Copy code
+SELECT * FROM Employees WHERE Age > 30;
+Explanation: This query selects all columns from the Employees table where the Age is greater than 30.
+
+Q4: Retrieve employees whose first name starts with 'A'.
+sql
+Copy code
+SELECT * FROM Employees WHERE FirstName LIKE 'A%';
+Explanation: This query selects all columns from the Employees table where the FirstName starts with 'A'.
+
+Q5: Retrieve all employees ordered by salary in descending order.
+sql
+Copy code
+SELECT * FROM Employees ORDER BY Salary DESC;
+Explanation: This query selects all columns from the Employees table and orders the results by Salary in descending order.
+
+Q6: Retrieve the total salary by department.
+sql
+Copy code
+SELECT DepartmentID, SUM(Salary) AS TotalSalary FROM Employees GROUP BY DepartmentID;
+Explanation: This query groups employees by DepartmentID and calculates the total salary for each department.
+
+Q7: Retrieve the average salary by department.
+sql
+Copy code
+SELECT DepartmentID, AVG(Salary) AS AverageSalary FROM Employees GROUP BY DepartmentID;
+Explanation: This query groups employees by DepartmentID and calculates the average salary for each department.
+
+Q8: Retrieve the number of employees in each department, excluding departments with fewer than 3 employees.
+sql
+Copy code
+SELECT DepartmentID, COUNT(*) AS EmployeeCount FROM Employees GROUP BY DepartmentID HAVING COUNT(*) >= 3;
+Explanation: This query groups employees by DepartmentID and counts the number of employees in each department, excluding departments with fewer than 3 employees.
+
+Q9: Retrieve employees with the highest salary in each department.
+sql
+Copy code
+SELECT e.EmployeeID, e.FirstName, e.LastName, e.DepartmentID, e.Salary
+FROM Employees e
+JOIN (
+    SELECT DepartmentID, MAX(Salary) AS MaxSalary
+    FROM Employees
+    GROUP BY DepartmentID
+) m ON e.DepartmentID = m.DepartmentID AND e.Salary = m.MaxSalary;
+Explanation: This query finds the maximum salary in each department and retrieves the employees earning that salary.
+
+Q10: Retrieve employees whose salary is above the average salary.
+sql
+Copy code
+SELECT * FROM Employees WHERE Salary > (SELECT AVG(Salary) FROM Employees);
+Explanation: This query selects all employees whose salary is greater than the average salary of all employees.
+
+Q11: Retrieve the second-highest salary.
+sql
+Copy code
+SELECT MAX(Salary) AS SecondHighestSalary
+FROM Employees
+WHERE Salary < (SELECT MAX(Salary) FROM Employees);
+Explanation: This query finds the second-highest salary by selecting the maximum salary that is less than the overall highest salary.
+
+Q12: Retrieve employees who have the same job title but different salaries.
+sql
+Copy code
+SELECT e1.EmployeeID, e1.FirstName, e1.LastName, e1.JobTitle, e1.Salary
+FROM Employees e1
+JOIN Employees e2 ON e1.JobTitle = e2.JobTitle
+WHERE e1.EmployeeID <> e2.EmployeeID AND e1.Salary <> e2.Salary;
+Explanation: This query joins the Employees table with itself to find employees with the same job title but different salaries.
+
+Q13: Retrieve employees who joined in the last 30 days.
+sql
+Copy code
+SELECT * FROM Employees WHERE JoinDate >= CURDATE() - INTERVAL 30 DAY;
+Explanation: This query selects employees whose JoinDate is within the last 30 days.
+
+Q14: Retrieve employees who do not have managers.
+sql
+Copy code
+SELECT * FROM Employees WHERE ManagerID IS NULL;
+Explanation: This query selects employees whose ManagerID is NULL, indicating they do not have a manager.
+
+Q15: Retrieve employees who earn more than their managers.
+sql
+Copy code
+SELECT e.EmployeeID, e.FirstName, e.LastName, e.Salary
+FROM Employees e
+JOIN Employees m ON e.ManagerID = m.EmployeeID
+WHERE e.Salary > m.Salary;
+Explanation: This query joins the Employees table with itself to find employees whose salary is greater than their manager's salary.
+
+Q16: Retrieve employees who have the same name but different departments.
+sql
+Copy code
+SELECT e1.EmployeeID, e1.FirstName, e1.LastName, e1.DepartmentID
+FROM Employees e1
+JOIN Employees e2 ON e1.FirstName = e2.FirstName AND e1.LastName = e2.LastName
+WHERE e1.EmployeeID <> e2.EmployeeID AND e1.DepartmentID <> e2.DepartmentID;
+Explanation: This query joins the Employees table with itself to find employees with the same name but different departments.
+
+Q17: Retrieve employees who have not received a salary increase.
+sql
+Copy code
+SELECT e.EmployeeID, e.FirstName, e.LastName, e.Salary
+FROM Employees e
+LEFT JOIN Salaries s ON e.EmployeeID = s.EmployeeID
+WHERE s.SalaryDate IS NULL OR s.SalaryDate < e.JoinDate;
+Explanation: This query uses a LEFT JOIN to find employees who do not have a salary record or whose salary record is before their join date.
+
+Q18: Retrieve employees who have received a salary increase.
+sql
+Copy code
+SELECT e.EmployeeID, e.FirstName, e.LastName, e.Salary
+FROM Employees e
+JOIN Salaries s ON e.EmployeeID = s.EmployeeID
+WHERE s.Salary > e.Salary;
+Explanation: This query joins the Employees table with the Salaries table to find employees whose salary has increased.
+
+Q19: Retrieve employees who have received a salary increase compared to their previous salary.
+sql
+Copy code
+SELECT s1.EmployeeID, ROUND(((s2.Salary - s1.Salary) / s1.Salary) * 100, 2) AS PercentageIncrease
+FROM Salaries s1
+JOIN Salaries s2 ON s1.EmployeeID = s2.EmployeeID
+WHERE s2.SalaryDate > s1.SalaryDate AND s2.Salary > s1.S
+::contentReference[oaicite:0]{index=0}
+ 
+EmployeeID	FirstName	LastName	DepartmentID	Salary
+1	Alice	Smith	101	48000
+2	Bob	Johnson	102	62000
+3	Carol	Williams	101	55000
+4	David	Brown	103	47000
+5	Emma	Davis	102	71000
+6	Frank	Miller	103	39000
+7	Grace	Wilson	101	52000
+
+
+

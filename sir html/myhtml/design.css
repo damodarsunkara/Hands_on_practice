@@ -1,0 +1,37 @@
+div{
+    width:350px;
+    height:300px;
+    background-color: white;
+    border:2px solid black;
+    border-radius:30px;
+    box-sizing: border-box;
+   
+
+}
+.id{
+   padding-top:50px;
+   padding-left:20px;
+   text-transform: uppercase;
+}
+input[type="text"]{
+    border-radius:20px;
+    font-size:20ppx;
+    padding-left:1em;
+    padding-right:1em;
+
+}
+
+
+button{
+    margin-top:100px;
+    margin-left:10px;
+    font-size:30px;
+    padding-left:1em;
+    padding-right:1em;
+    border-radius:20px;
+}
+button:hover{
+    color:blue;
+    background-color: antiquewhite;
+}
+

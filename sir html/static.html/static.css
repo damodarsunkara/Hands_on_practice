@@ -1,0 +1,18 @@
+.a{
+    width:400px;
+    height: 100px;
+    background-color: aqua;
+    border: 2px;
+    border-radius: 20px;
+    padding-top:10px;
+    padding-left:100px;
+    text-align: center;
+}
+tr>td{
+    color:rgb(7, 126, 27);
+    text-transform: uppercase;
+
+}
+tr>td>input["type" = "text"]{
+    color:blue;
+}

@@ -1,0 +1,33 @@
+.ss{
+    height:180px;
+    width:80px;
+    background-color: white;
+    border:2px solid black;
+    border-radius:0;
+    box-sizing: border-box;
+    padding-left:8.5px
+  
+
+}
+
+
+
+
+
+div{
+    height:50px;
+    width:50px;
+    background-color: rgb(46, 231, 231);
+    margin:4px;
+    display:block;
+    border-radius: 50%;
+}
+#f{
+    background-color:red;
+}
+#s{
+    background-color: rgb(15, 247, 54);
+}
+#s1{
+    background-color: yellow;
+}

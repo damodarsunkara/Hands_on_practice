@@ -1,0 +1,101 @@
+
+You are building an online shopping website.
+Customers can pay in different ways: Credit Card, PayPal, UPI, etc.
+
+You don’t want to write separate code for each payment type everywhere. Instead, you want one abstract payment method that hides the complex details.
+
+🔹 What is abc?
+abc stands for Abstract Base Classes.
+It’s a built-in Python module that provides tools to create abstract classes and methods.
+
+🔹 Why import ABC and abstractmethod?
+You import them to:
+
+ABC: Mark a class as abstract.
+
+abstractmethod: Mark a method as abstract (no code, must be overridden).
+
+You only need to import them in the file where you’re defining an abstract c
+from abc import ABC, abstractmethod
+
+class PaymentMethod(ABC):
+    @abstractmethod
+    def pay(self, amount):
+        pass  # No implementation here — each method will define its own
+
+class CreditCard(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paying ₹{amount} using Credit Card.")
+
+class PayPal(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paying ₹{amount} using PayPal.")
+
+class UPI(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paying ₹{amount} using UPI.")
+def complete_payment(payment: PaymentMethod, amount):
+    payment.pay(amount)  # We don't care how it pays — just that it can
+
+# Examples
+complete_payment(CreditCard(), 500)
+complete_payment(PayPal(), 250)
+complete_payment(UPI(), 100)
+Paying ₹500 using Credit Card.
+Paying ₹250 using PayPal.
+Paying ₹100 using UPI.
+
+
+🔹 What Is Duck Typing?
+In Python:
+
+“If it walks like a duck and quacks like a duck, it’s a duck.”
+
+That means:
+
+Python doesn’t care what type an object is.
+
+If it has the method you want and it works — go ahead and use it!
+
+This is called duck typing: behavior matters more than the class.
+
+
+def complete_payment(payment: PaymentMethod, amount):
+This is a function definition in Python. Let’s break it down piece by piece:
+
+1. def complete_payment(...)
+This defines a function named complete_payment.
+
+A function is a block of reusable code that performs a specific task.
+
+2. (payment: PaymentMethod, amount)
+Inside the parentheses are parameters — inputs the function expects.
+
+payment: This parameter expects an object that is (or behaves like) a PaymentMethod.
+
+amount: This parameter expects a number representing how much money to pay.
+3. What does payment: PaymentMethod mean?
+This is called a type hint or type annotation.
+
+It tells Python (and humans reading the code) that payment should be an instance of the PaymentMethod class or a subclass of it.
+
+This helps tools and editors check your code but doesn’t stop the program if you pass something else (Python is still dynamically typed).
+
+. What happens inside the function?
+python
+Copy code
+payment.pay(amount)
+The function calls the .pay() method of the payment object.
+
+Since payment should be a PaymentMethod, it must have a .pay() method (because PaymentMethod declares it as abstract).
+
+This means you can pass in a CreditCard(), UPI(), or PayPal() object — all have their own .pay() method, and this function calls the right one dynamically.
+
+Why is this useful?
+You can write one function that handles any payment method without caring about the details.
+
+This uses polymorphism: the same method call .pay() behaves differently depending on the object passed.
+
+Quick example recap:
+
+
