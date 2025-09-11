@@ -2,11 +2,11 @@ import json
 import hashlib
 
 class Customers:
-    def __init__(self,name,password,balance=0.0):
+    def __init__(self,name,password):
         self.name=name
         
         self.password = hashlib.sha256(str(password).encode()).hexdigest()
-        self.balance=balance
+        self.balance=0.0
     def display(self):
         print(f" your current balance is RS {self.balance}")
     def deposit(self,amount):
@@ -162,3 +162,4 @@ if __name__=="__main__":
     main()
                     
                 
+
