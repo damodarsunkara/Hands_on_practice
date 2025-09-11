@@ -23,7 +23,7 @@ print(s)
 
 
 '''
-🔸 Concept:
+ Concept:
 reduce() is used to apply a function cumulatively to the items in an iterable, from left to right.
 
 You have to import it from the functools module.
@@ -52,7 +52,7 @@ Or with a lambda:
 python
 Copy code
 product = reduce(lambda x, y: x * y, numbers)
-✅ Summary Table:
+Summary Table:
 Function	Purpose	Returns	Function Type
 map()	Transform all items	map object	One-to-one
 filter()	Select items that meet condition	filter object	Conditional select
@@ -147,8 +147,8 @@ give exerices on python decorators and generators ,and oops
 ChatGPT said:
 Sure! Here are exercises on Python decorators, generators, and OOP (Object-Oriented Programming), organized by difficulty level.
 
-🔁 Python Generators
-🟢 Basic
+ Python Generators
+ Basic
 Even Number Generator: Write a generator function that yields even numbers from 0 to 100.
 
 Range Alternative: Create a generator that mimics the behavior of range(start, stop, step).
@@ -162,47 +162,47 @@ Chunk Generator: Yield a list in chunks of a given size.
 
 Infinite Counter: Write a generator that counts infinitely, starting from a given number.
 
-🔴 Advanced
+ Advanced
 Prime Number Generator: Build a generator that yields prime numbers less than n.
 
 Nested Generator: Create a generator that uses another generator to flatten nested lists.
 
-🎯 Python Decorators
-🟢 Basic
+ Python Decorators
+ Basic
 Logger Decorator: Create a decorator that logs the arguments and return value of a function.
 
 Timer Decorator: Write a decorator that calculates the time a function takes to run.
 
 Uppercase Decorator: A decorator that modifies a string-returning function to return the result in uppercase.
 
-🟡 Intermediate
+ Intermediate
 Authorize Decorator: Check if a user has a role before allowing access to a function.
 
 Retry Decorator: Retry a function a set number of times if it raises an exception.
 
 Memoization: Implement a decorator that caches results of expensive function calls.
 
-🔴 Advanced
+ Advanced
 Decorator with Arguments: Write a decorator that takes an argument (e.g., @repeat(n) to repeat function n times).
 
 Stack Multiple Decorators: Use two or more decorators together and ensure they execute in the right order.
 
-🧱 Object-Oriented Programming (OOP)
-🟢 Basic
+ Object-Oriented Programming (OOP)
+ Basic
 Class with Methods: Create a Person class with name and age, and a method to display details.
 
 Bank Account: Build a BankAccount class that supports deposit, withdrawal, and balance checking.
 
 Rectangle Class: Create a class with width and height and methods to compute area and perimeter.
 
-🟡 Intermediate
+Intermediate
 Inheritance: Implement a Vehicle class, then extend it with Car and Bike classes.
 
 Library System: Create a system with Book, Member, and Library classes and their interactions.
 
 Class Variables and Methods: Use @classmethod and @staticmethod to track object count.
 
-🔴 Advanced
+ Advanced
 Operator Overloading: Create a Vector class that overloads +, -, and * operators.
 
 Abstract Base Classes: Use the abc module to define and implement an interface.
@@ -222,10 +222,10 @@ Since you're not currently logged in to use Python tools in ChatGPT, I can't gen
 # Python Exercises: Decorators, Generators, and OOP
 
 # =============================
-# 🔁 Generators
+#Generators
 # =============================
 
-# 🟢 Basic
+#  Basic
 def even_numbers():
     """Yield even numbers from 0 to 100"""
     pass
@@ -238,7 +238,7 @@ def fibonacci(n):
     """Yield first n Fibonacci numbers"""
     pass
 
-# 🟡 Intermediate
+#  Intermediate
 def read_lines(file_path):
     """Generator to read lines from a file"""
     pass
@@ -262,10 +262,10 @@ def flatten(nested_list):
 
 
 # =============================
-# 🎯 Decorators
+#  Decorators
 # =============================
 
-# 🟢 Basic
+# Basic
 def logger(func):
     """Log arguments and return value"""
     pass
@@ -278,7 +278,7 @@ def uppercase(func):
     """Convert returned string to uppercase"""
     pass
 
-# 🟡 Intermediate
+#  Intermediate
 def authorize(role):
     """Decorator with role check"""
     def decorator(func):
@@ -295,7 +295,7 @@ def memoize(func):
     """Cache results of expensive function calls"""
     pass
 
-# 🔴 Advanced
+#  Advanced
 def repeat(n):
     """Repeat function n times"""
     def decorator(func):
@@ -304,10 +304,10 @@ def repeat(n):
 
 
 # =============================
-# 🧱 OOP
+#  OOP
 # =============================
 
-# 🟢 Basic
+#  Basic
 class Person:
     """Create a Person class"""
     pass
@@ -318,6 +318,7 @@ class BankAccount:
 
 class Rectangle:
     """Rectangle with area and perimeter methods"""
+
 
 
 
