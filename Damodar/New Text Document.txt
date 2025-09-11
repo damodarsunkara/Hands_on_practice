@@ -82,11 +82,11 @@ JSON – for structured data like settings, records
 
 Pickle – for saving Python objects (models, data structures)
 
-✅ 1. CSV File Handling – Use Case: Product Inventory
+1. CSV File Handling – Use Case: Product Inventory
 🧾 Goal:
 Read product data from a CSV file and print product names and prices.
 
-🔹 Sample CSV: products.csv
+ Sample CSV: products.csv
 arduino
 Copy
 Edit
@@ -94,7 +94,7 @@ ProductID,Name,Price
 101,Laptop,999.99
 102,Phone,499.99
 103,Mouse,19.99
-🔸 Step-by-Step Code
+ Step-by-Step Code
 python
 Copy
 Edit
@@ -107,7 +107,7 @@ with open('products.csv', 'r') as file:
     # Step 4: Loop through the file and access values
     for row in reader:
         print(f"Product: {row['Name']}, Price: ${row['Price']}")
-🧠 Explanation:
+ Explanation:
 import csv: Enables handling of CSV files.
 
 open('products.csv', 'r'): Opens the file for reading.
@@ -118,7 +118,7 @@ row['Name']: Accesses the value for the “Name” column.
 
 print(...): Outputs product name and price clearly.
 
-✅ 2. JSON File Handling – Use Case: Patient Record System
+ 2. JSON File Handling – Use Case: Patient Record System
 🧾 Goal:
 Read patient records from a JSON file and display their name and condition.
 
@@ -130,7 +130,7 @@ Edit
   {"name": "Alice", "age": 30, "condition": "Healthy"},
   {"name": "Bob", "age": 45, "condition": "Diabetes"}
 ]
-🔸 Step-by-Step Code
+ Step-by-Step Code
 python
 Copy
 Edit
@@ -143,7 +143,7 @@ with open('patients.json', 'r') as file:
 # Step 4: Loop through patient records
 for patient in patients:
     print(f"{patient['name']} is {patient['age']} years old and has {patient['condition']}.")
-🧠 Explanation:
+ Explanation:
 import json: Lets Python work with JSON files.
 
 open(..., 'r'): Opens the file for reading.
@@ -152,11 +152,11 @@ json.load(...): Converts JSON data into Python objects (list of dictionaries).
 
 Loop iterates over each patient dictionary and prints their details.
 
-✅ 3. Pickle File Handling – Use Case: Saving a Python Dictionary
+3. Pickle File Handling – Use Case: Saving a Python Dictionary
 🧾 Goal:
 Save a Python dictionary to a file, and then read it back.
 
-🔸 Step-by-Step Code
+ Step-by-Step Code
 python
 Copy
 Edit
@@ -168,14 +168,13 @@ data = {'name': 'John', 'scores': [95, 87, 92]}
 # Step 3: Save object to file in binary mode
 with open('data.pkl', 'wb') as file:
     pickle.dump(data, file)  # Saves Python object to file
-🧠 Explanation (Writing):
+Explanation (Writing):
 import pickle: Used to serialize Python objects.
 
 open('data.pkl', 'wb'): Opens a file in write-binary mode.
 
 pickle.dump(data, file): Converts data into binary and saves it.
-
-🔸 Now: Read it back
+ Now: Read it back
 python
 Copy
 Edit
@@ -186,7 +185,7 @@ with open('data.pkl', 'rb') as file:
 # Step 5: Use the loaded data
 print(f"Name: {loaded_data['name']}")
 print(f"Scores: {loaded_data['scores']}")
-🧠 Explanation (Reading):
+Explanation (Reading):
 open('data.pkl', 'rb'): Opens the file in read-binary mode.
 
 pickle.load(...): Deserializes the binary back into a Python dictionary.
@@ -198,4 +197,5 @@ Format	Best For	Module	File Type	Serialization
 CSV	Tabular data (Excel)	csv	.csv	No
 JSON	Configs, Records	json	.json	Yes (Text)
 Pickle	Python-only objects	pickle	.pkl	Yes (Binary)
+
 
