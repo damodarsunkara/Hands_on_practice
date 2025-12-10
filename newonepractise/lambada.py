@@ -14,11 +14,11 @@ print(li3)
 
 
 #3
-def even(*num):
-    for i in num:
+def ss(*num):
+    for i num:
         if i%2==0:
-            
-            return True
+            print("even",num)
+ss(1,2,3,4)
     
         
 li4=tuple(filter(even,(1,2,3,4,5,6)))
@@ -245,6 +245,7 @@ print(x)
 
 
         
+
 
 
 
